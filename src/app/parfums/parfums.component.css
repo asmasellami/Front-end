@@ -1,0 +1,40 @@
+table {
+  border: 1px solid whitesmoke;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 15px;
+ margin: top 20px;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  font-family: Verdana;
+}
+
+/*tr:hover {background-color:lightblue;}*/
+h1 {
+  text-align: center;
+  font-style: italic;
+  color:lightblue;
+}
+
+.mb-4 {
+  margin-block: 3.5rem;
+}
+.btn-danger {
+  color: #fff;
+  background-color: red;
+  border-color: black;
+}
+.btn-success {
+  color: #fff;
+  background-color: green;
+  border-color: black;
+}
+.btn-warning {
+  color: #212529;
+  background-color:lightblue;
+  border-color: lightblue;
+}
+

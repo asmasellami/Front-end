@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card shadow mb-4">
+  <div class="card-body">
+  <table class="table table-striped">
+  <tr><th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th> <th>Marque</th> <th> Actions</th> </tr>
+  <tbody *ngFor="let parfum of parfums">
+  <tr>
+  <td>{{parfum.idParfum}}</td>
+  <td>{{parfum.parfumName}}</td>
+  <td>{{parfum.parfumPrice}}</td>
+  <td>{{parfum.releasedate | date:'dd/MM/yyyy'}}</td>
+  <td>{{parfum.marque?.marqueName}}</td>
+  <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
+  <td><a  *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </div>

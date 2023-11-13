@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h2>Modifier un Parfum :</h2>
+  <form>
+    <div class="form-group">
+      <label for="idParfum">ID Parfum :</label>
+      <input readonly type="text" [(ngModel)]="currentParfum.idParfum" name="idParfum" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="parfumName">Nom Parfum :</label>
+      <input type="text" [(ngModel)]="currentParfum.parfumName" name="parfumName" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="parfumPrice">Prix Parfum :</label>
+      <input type="number" [(ngModel)]="currentParfum.parfumPrice" name="parfumPrice" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="releasedate">Date création :</label>
+      <input type="date" [ngModel]="currentParfum.releasedate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="currentParfum.releasedate = $event" name="releasedate" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="idMarque">Marque :</label>
+      <select class="form-control" id="idMarque" name="idMarque" [(ngModel)]="updatedIdMarque">
+        <option *ngFor="let marq of marques" [value]="marq.idMarque">
+          {{marq.marqueName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="updateParfum()" class="btn btn-success">Modifier</button>
+    </div>
+  </form>
+</div>

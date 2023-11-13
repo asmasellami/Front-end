@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+        <h6>  <label for="searchTerm" class="mr-2">Nom Parfum en tapant</label></h6>
+
+           <!----chercher nom en utulisant bouton -->
+         <!-- <input type="text" class="form-control" [(ngModel)]="nomParfum" name="nomParfum" class="form-control">
+          <button type="button" class="btn btn-primary ml-2" (click)="rechercherParfs()">Rechercher</button> -->
+
+          <!----Chercher avec methode onkey--->
+          <!-- <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)"> -->
+          <input class="form-control" [(ngModel)]="searchTerm" name="searchTerm" id="searchTerm">
+        </div>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Marque</th>
+          </tr>
+        </thead>
+       <!--  <tbody *ngFor="let parfum of parfums "> --> <!--tzidha bech tcherchi bel btn ou clavier-->
+        <tbody *ngFor="let parfum of parfums | searchFilter: searchTerm ">
+          <tr>
+            <td>{{parfum.idParfum}}</td>
+            <td>{{parfum.parfumName}}</td>
+            <td>{{parfum.parfumPrice}}</td>
+            <td>{{parfum.releasedate | date:'dd/MM/yyyy'}}</td>
+            <td>{{parfum.marque?.marqueName}}</td>
+            <!-- <td><a class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

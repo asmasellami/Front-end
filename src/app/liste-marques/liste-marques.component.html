@@ -1,0 +1,31 @@
+<div class="container-sm mt-5">
+  <div class="col-sm-2 col-md-2 col-lg-2 mb-2">
+    <app-update-marque [marque]="updatedMarq"(marqueUpdated)="marqueUpdated($event)" [ajout]="ajout"></app-update-marque>
+  </div>
+
+  <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom de la Marque</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let marq of marques">
+            <tr>
+              <td>{{marq.idMarque}}</td>
+              <td>{{marq.marqueName}}</td>
+              <td>
+                <button class="btn btn-success" (click)="updateMarq(marq)">Éditer</button>
+                <button class="btn btn-danger ml-2" (click)="supprimerMarque(marq)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

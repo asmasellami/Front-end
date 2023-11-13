@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="card shadow mb-4">
+    <div class="card-body ">
+      <h5 class="card-title text-center">Recherche par marque</h5> <!-- Titre -->
+      <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <h6><label for="idMarque">Marques</label></h6>
+        <select class="form-control form-control-lg" id="idMarque" name="idMarque" [(ngModel)]="IdMarque" (change)="onChange()">
+          <option *ngFor="let marq of marques" [value]="marq.idMarque">
+            {{marq.marqueName}}
+          </option>
+        </select>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Marque</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let parfum of parfums">
+          <tr>
+            <td>{{parfum.idParfum}}</td>
+            <td>{{parfum.parfumName}}</td>
+            <td>{{parfum.parfumPrice}}</td>
+            <td>{{parfum.releasedate | date:'dd/MM/yyyy'}}</td>
+            <td>{{parfum.marque?.marqueName}}</td>
+            <!-- <td><a class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
