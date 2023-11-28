@@ -1,7 +1,7 @@
 <form>
   <div [hidden]="ajout" >
   <label>ID Marque</label>
-  <input type="text" [(ngModel)]="marque.idMarque" name="idMarque" class="form-control w-25">
+  <input readonly type="text" [(ngModel)]="marque.idMarque" name="idMarque" class="form-control w-25">
   </div>
   <div>
   <h6><label>Nom de la Marque</label></h6>
@@ -9,8 +9,7 @@
   placeholder="Entrez un nom de la marque...">
   </div>
   <div class="mt-2">
-   <button type="submit" [disabled]="!marque.marqueName" class="btn btn-success"
-  (click)="saveMarque()" >{{ajout ? 'Ajouter' : 'Modifier'}}
+   <button type="submit" [disabled]="!marque.marqueName" class="btn btn-success"(click)="saveMarque()" >{{ajout ? 'Ajouter' : 'Modifier'}}
 </button>
   </div>
   </form>

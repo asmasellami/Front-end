@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <h2>Modifier un Parfum :</h2>
   <form>
     <div class="form-group">
@@ -29,6 +29,117 @@
           {{marq.marqueName}}
         </option>
       </select>
+    </div>
+
+        <div class="col-sm-16 col-md-16 col-lg-16">
+          <label class="mb-2">Image :</label>
+          <input type="file" (change)="onImageUpload($event)" class="form-control">
+      </div>
+
+      <div class="mt-2">
+          <button type="submit" (click)="onAddImageParfum()" class="btn
+          btn-success">Ajouter Image</button>
+      </div>
+
+      <div class="col-sm-16 col-md-16 col-lg-16">
+        <img [src]="myImage" class="card-img-top img-fluid rounded-start"style="width: 200px; height: 200px" />
+        </div>
+          <div class="card shadow mb-4">
+              <div class="card-body">
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th>Images</th>
+                          </tr>
+                      </thead>
+                      <tbody *ngFor="let img of currentParfum.images">
+                          <tr>
+                            <td> <img class="card-img-top img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                              style="height :100px;width:100px"></td>
+
+                              <td style="width:20%" ><a class="btn btn-danger"
+                               (click)="supprimerImage(img)">Supprimer</a></td>
+
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="updateParfum()" class="btn btn-success">Modifier</button>
+    </div>
+  </form>
+</div>
+ -->
+ <div class="container mt-5">
+  <h2 class="mb-4">Modifier un Parfum :</h2>
+  <form>
+    <div class="form-group">
+      <label for="idParfum">ID Parfum :</label>
+      <input readonly type="text" [(ngModel)]="currentParfum.idParfum" name="idParfum" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="parfumName">Nom Parfum :</label>
+      <input type="text" [(ngModel)]="currentParfum.parfumName" name="parfumName" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="parfumPrice">Prix Parfum :</label>
+      <input type="number" [(ngModel)]="currentParfum.parfumPrice" name="parfumPrice" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="releasedate">Date création :</label>
+      <input type="date" [ngModel]="currentParfum.releasedate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="currentParfum.releasedate = $event" name="releasedate" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="idMarque">Marque :</label>
+      <select class="form-control" id="idMarque" name="idMarque" [(ngModel)]="updatedIdMarque">
+        <option *ngFor="let marq of marques" [value]="marq.idMarque">
+          {{marq.marqueName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUpload" class="mb-2">Image :</label>
+      <input type="file" (change)="onImageUpload($event)" class="form-control">
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="onAddImageParfum()" class="btn btn-success">Ajouter Image</button>
+    </div>
+
+    <div class="mt-4">
+      <img [src]="myImage" class="img-fluid rounded-start" style="width: 200px; height: 200px" />
+    </div>
+
+    <div class="card shadow mt-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Images</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let img of currentParfum.images">
+            <tr>
+              <td>
+                <img class="img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                  style="height: 100px; width: 100px">
+              </td>
+              <td style="width:20%">
+                <a class="btn btn-danger" (click)="supprimerImage(img)">Supprimer</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="mt-2">

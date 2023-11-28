@@ -5,7 +5,7 @@
 <title>Gestion des Parfums</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="authService.isloggedIn">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
 <!-- Brand -->
 <a class="navbar-brand" href="#">Gestion Parfums</a>
 <!-- Links -->
@@ -36,7 +36,8 @@ Parfums
     <div class="dropdown-menu">
       <a *ngIf="!authService.isloggedIn"  class="dropdown-item" routerLink = "login">login</a>
       <a *ngIf="authService.isloggedIn" class="dropdown-item" (click) = "onLogout()">logout</a>
-      <a class="dropdown-item" href="#">Profile</a>
+
+     <!--  <a class="dropdown-item" href="#">Profile</a> -->
 </div>
 </li>
 </ul>

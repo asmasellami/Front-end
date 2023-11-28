@@ -2,7 +2,7 @@
   <div class="card shadow mb-4">
   <div class="card-body">
   <table class="table table-striped">
-  <tr><th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th> <th>Marque</th> <th> Actions</th> </tr>
+  <tr><th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th> <th>Marque</th> <th>Image</th> <th *ngIf="authService.isAdmin()"> Actions</th> </tr>
   <tbody *ngFor="let parfum of parfums">
   <tr>
   <td>{{parfum.idParfum}}</td>
@@ -10,6 +10,11 @@
   <td>{{parfum.parfumPrice}}</td>
   <td>{{parfum.releasedate | date:'dd/MM/yyyy'}}</td>
   <td>{{parfum.marque?.marqueName}}</td>
+
+ <!-- <td><img class="card-img-top img-responsive" src ="{{parfum.imageStr}}" style = "height :50px;width:100px"></td>
+ <td> <img class="card-img-top img-responsive" src="{{apiURL+'/image/loadfromFS/'+parfum.idParfum}}"style = "height :100px;width:100px"></td>-->
+   <!-- <td> <img *ngIf="parfum.image" [src]="'data:image/webp;base64,' + parfum.image.image" alt="parfum Image" style="width: 100px; height: 100px;"></td> -->
+   <td><img class="img-thumbnail" src="{{apiURL+'/image/loadfromFS/'+parfum.idParfum}}" alt="{{parfum.parfumName}}" style="height: 110px; width: 150px"></td>
   <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
   <td><a  *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
   </tr>
